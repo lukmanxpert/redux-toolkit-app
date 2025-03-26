@@ -1,11 +1,10 @@
-import CounterView from "./features/counter/CounterView"
+import React from 'react'
+import BookList from './components/book/BookList'
 
-function App() {
-
+const App = () => {
   return (
-    <div>
-      <h1 className="counter">Counter App</h1>
-      <CounterView />
+    <div className='min-w-screen'>
+      <BookList />
     </div>
   )
 }
