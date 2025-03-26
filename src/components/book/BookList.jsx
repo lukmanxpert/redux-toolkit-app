@@ -16,7 +16,7 @@ const BookList = () => {
                 {
                     books && books.length > 0 ? books.map((book) => {
                         return <li key={book.id} className='flex gap-4 justify-center items-center'>
-                            <p className='font-medium'>{book.id}. {book?.name} by {book.author} ${book.price} - {book.quantity}pcs</p>
+                            <p className='font-medium'>{book?.name} - by {book.author} ${book.price} - {book.quantity}pcs</p>
                             <button onClick={() => handleDelete(book.id)}>Delete</button>
                         </li>
                     }) : "No Book's Available"
