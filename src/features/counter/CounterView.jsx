@@ -7,9 +7,9 @@ export default function CounterView() {
     const dispatch = useDispatch();
     console.log(count);
     return (
-        <div>
-            <h1>Count: {count}</h1>
-            <div className='all-button'>
+        <div className='flex justify-center flex-col items-center '>
+            <h1 className='text-3xl font-bold'>Count: {count}</h1>
+            <div className='all-button flex gap-4'>
                 <button onClick={() => dispatch(increment())}>Increment</button>
                 <button onClick={() => dispatch(decrement())}>Decrement</button>
                 <button onClick={() => dispatch(reset())}>Reset</button>
