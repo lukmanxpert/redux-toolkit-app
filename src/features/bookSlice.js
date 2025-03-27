@@ -28,16 +28,8 @@ const bookSlice = createSlice({
     },
     updateBook: (state, action) => {
       const { id, name, author, price, quantity } = action.payload;
-
-      console.log(
-        "Current state.book:",
-        JSON.parse(JSON.stringify(state.book))
-      ); // Debugging
-
       const existingBook = state.book.find((book) => book.id == id);
-
-      console.log("Found Book:", existingBook); // Debugging
-
+      console.log("Found Book:", existingBook);
       if (existingBook) {
         existingBook.name = name;
         existingBook.author = author;
