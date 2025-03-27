@@ -28,13 +28,23 @@ const bookSlice = createSlice({
     },
     updateBook: (state, action) => {
       const { id, name, author, price, quantity } = action.payload;
+
+      console.log(
+        "Current state.book:",
+        JSON.parse(JSON.stringify(state.book))
+      ); // Debugging
+
       const existingBook = state.book.find((book) => book.id == id);
-      console.log(existingBook);
+
+      console.log("Found Book:", existingBook); // Debugging
+
       if (existingBook) {
         existingBook.name = name;
         existingBook.author = author;
         existingBook.price = price;
         existingBook.quantity = quantity;
+      } else {
+        console.log(`No book found with ID: ${id}`);
       }
     },
     addBook: (state, action) => {

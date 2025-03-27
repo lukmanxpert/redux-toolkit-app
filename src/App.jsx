@@ -13,7 +13,7 @@ const App = () => {
   return (
     <div className='min-w-screen'>
       <BookList onHandleEdit={handleEdit} />
-      <AddBook bookToEdit={bookToEdit} onCancel={handleCancel} />
+      <AddBook bookToEdit={bookToEdit} onCancel={handleCancel} setBookToEdit={setBookToEdit} />
     </div>
   )
 }

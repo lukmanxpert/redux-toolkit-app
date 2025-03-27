@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { nanoid } from 'nanoid'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addBook, updateBook } from '../../features/bookSlice';
 
-const AddBook = ({ bookToEdit, onCancel }) => {
+const AddBook = ({ bookToEdit, onCancel, setBookToEdit }) => {
     const dispatch = useDispatch()
+    const books = useSelector((state) => state.booksR.book);
+    console.log(books);
     const [book, setBook] = useState({
         name: "",
         author: "",
@@ -19,7 +20,11 @@ const AddBook = ({ bookToEdit, onCancel }) => {
 
     const handleChange = (event) => {
         const { name, value } = event.target
-        setBook((prevBook) => ({ ...prevBook, [name]: value, id: nanoid() }))
+        if (bookToEdit) {
+            setBook((prevBook) => ({ ...prevBook, [name]: value }))
+        } else {
+            setBook((prevBook) => ({ ...prevBook, [name]: value, id: books.length + 1 }))
+        }
     }
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -31,6 +36,7 @@ const AddBook = ({ bookToEdit, onCancel }) => {
                 price: "",
                 quantity: ""
             });
+            setBookToEdit(null)
         } else {
             dispatch(addBook(book))
             setBook({
