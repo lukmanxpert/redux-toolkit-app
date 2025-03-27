@@ -2,11 +2,14 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteBook } from '../../features/bookSlice'
 
-const BookList = () => {
+const BookList = ({ onHandleEdit }) => {
     const dispatch = useDispatch()
     const books = useSelector(state => state.booksR.book)
     const handleDelete = (id) => {
         dispatch(deleteBook(id))
+    }
+    const handleEdit = (book) => {
+        onHandleEdit(book)
     }
     console.log("Book's", books);
     return (
@@ -18,6 +21,7 @@ const BookList = () => {
                         return <li key={book.id} className='flex gap-4 justify-center items-center'>
                             <p className='font-medium'>{book?.name} - by {book.author} ${book.price} - {book.quantity}pcs</p>
                             <button onClick={() => handleDelete(book.id)}>Delete</button>
+                            <button onClick={() => handleEdit(book)}>Edit</button>
                         </li>
                     }) : "No Book's Available"
                 }
